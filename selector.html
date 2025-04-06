@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <h2>list to be displayed</h2>
+    <style>
+        .red{
+            height:200px;
+            width:100px;
+        }
+        .yellow{
+            height:200px;
+            width:100px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button type ="button"id="list_btn">Show</button>
+        <h4>numbers:<span id="num_count">0</span></h4>
+        <ul id="list_items"></ul>
+    </div>
+    <script>
+        var i=0;
+        var ulElement=document.getElementById("list_items")
+        document.getElementById("list_btn").addEventListener("click",showList)
+        function showList(){
+            i++;
+            document.getElementById('num_count').innerText=i;
+            //create element
+            var li=document.createElement("li");
+            li.innerHTML='<b>This is a platform created to help people reunite with their beloved ones which they may have departed for various reasons</b>';
+            li.setAttribute('data-i',i);
+            //append element
+            ulElement.appendChild(li)
+            ulElement.style.display="grid";
+            ulElement.style.gridTemplateColumns="repeat(4,1fr)";
+            ulElement.style.gap="2px";
+            if(i%2===0){
+                li.getAttribute('class','red')
+                li.style.backgroundColor="red";
+                li.style.listStyleType="none";
+                li.style.margin="2px";
+                li.style.height="200px";
+                li.style.width="200px";
+                li.style.fontStyle="oblique";
+                li.style.alignItems="center";
+                li.style.color="white";
+                li.style.border="dotted";
+            }else{
+                li.getAttribute('class','yellow')
+                li.style.backgroundColor="yellow";
+                li.style.listStyleType="none";
+                li.style.margin="2px";
+                li.style.height="200px";
+                li.style.width="200px";
+                li.style.fontStyle="oblique";
+                li.style.alignItems="center";
+                li.style.color="white";
+                li.style.border="double";
+            }
+}
+    </script>
+</body>
+</html>

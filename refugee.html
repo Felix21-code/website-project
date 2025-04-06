@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>refugee</title>
+        <nav>
+            <ul class="navbar">
+            <div><h1><span>utalii</span>camp</h1></div>
+            <li><a id="link_home"href="Home.html"method="GET"action="/required">Home</a></li>
+            <li><a href ="Documentation.html">Documentation</a></li>
+            <li><a href ="contact us.html">contact us</a></li>
+            <li><a id="link_abt"href ="about.html">About</a></li>
+            </ul>
+        </nav>
+    </head>
+    <body class="body">
+        <div>
+            <h1>welcome</h1>
+            <h1>to</h1>
+            <h1>utalii</h1> 
+            <h1>camp</h1>
+            <h1>website</h1>
+        </div>
+        <div class="about_Info"id ="about">
+        <p id="content_abt">This is a platform created to help people reunite with their beloved ones which they may have departed for various reasons i.e</p>
+        <ul class="list"id=list_home>
+            <li>political issues</li>
+            <li>family issues</li>
+            <li>other general issues</li>
+        </ul>
+        <p>create account or register below to explore more of our services</p>
+        </div>
+        <center>
+        <label>create account</label>
+        <button method="GET"action="/register">register</button>
+        </br>
+        <label>already have account</label>
+        <button method="GET"action="/login">login</button>
+        </br>
+        <label>press</label>
+        <button>forgot password</button>
+        </br>
+        </center>
+        <style>
+            .navbar{
+                position:sticky;display:flex;
+                flex-direction:row;list-style:none; background-color:pink;
+                top:0px;line-height:3%;height:100px;
+            }
+               .navbar li{
+                    padding:60px;
+            }
+           div h1{
+                font-size:50px;font-weight:bolder;
+                text-align:center;text-transform:capitalize;
+                
+            }
+            h1{
+                font-family:default;font-weight:bolder;font-size:100px;
+                text-transform:uppercase;top:0px;flood-color:aqua;
+            }
+            .list{
+                text-align:center;list-style-type:disk;
+                color:pink;
+            }
+            {
+                text-align:center;color:pink;
+            }
+            .body{
+                background-color:white;border:5px;
+                border-color:brown;
+
+            }
+            a:link{
+                text-decoration:none; color:white;
+            }
+            a:lover{
+                color:yellow;
+            }
+            a:visited{
+                color:grey;
+            }
+            a:focus{
+                color:green;
+            }
+            a:active{
+                color:blue;}
+            label{
+                line-height:3%;
+                color:pink;
+            }
+            button{
+                line-height:3%;background-color:blue;
+                color:white;height:10px;
+            }
+            .About_info{
+                display:none;
+            }
+            #content_abt{
+                height:800px;width:900px;background-color: aquamarine;
+                color:goldenrod;display:none;text-align: center;
+            }
+            .list{
+                display:none;
+            }
+
+        </style>
+        <script>
+           
+        function showHome(){
+       var home=document.getElementById('list_home')
+       var link=document.getElementById("link_home")
+       if(link){
+       home.style.display="block";
+       }
+        var url='home.html';
+       var response=fetch('url')
+       var data=response.json('home');
+       console.log('data')
+    }
+    document.getElementById("link_home").addEventListener("click",showHome)
+        </script>
+    </body>
+    </html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color:azure;}
+        .main-box{
+            font-family:default;
+            position:absolute;
+            display:none;
+            justify-content:flex-start;
+            padding:15px;
+            border:dotted,solid,1px;
+            border-color:whitesmoke;
+            background-color:azure;
+            margin-left:20px;
+            margin-top: 100px;
+            height:250px;
+            width: 800px;
+        }
+        button{
+            text-align: center;
+        }
+        input{
+            margin:0cap;
+            line-height:0ch;
+            margin-left:15px;
+            margin-top:15px;
+            border-color:whitesmoke;
+            
+        }
+        .username{
+            font-style:oblique;
+            font-stretch:expanded;
+        }
+        .password{
+            font-style:oblique;
+            font-stretch:expanded;
+        }
+        h2{
+            color:whitesmoke;
+            font-weight:100;
+            margin-left:10px;
+            font-style:oblique;
+            font-size:20px;
+            font-weight: 200px;
+            font-stretch:expanded;
+        }
+        .dep-card{
+            height: 150px;
+            width: 200px;
+            background-color:antiquewhite;
+            border:double;
+            border-color:whitesmoke;
+            margin-right:10px;
+            margin-top: 50px;
+
+        }
+        .draw-card{
+            height: 150px;
+            width: 200px;
+            background-color: antiquewhite;
+            border:double;
+            border-color:whitesmoke;
+            margin-right:10px;
+            margin-top: 50px;
+        }
+        .bal-card{
+            height: 150px;
+            width: 200px;
+            background-color:antiquewhite;
+            border:double;
+            border-color:whitesmoke;
+            margin-top:50px;
+        }
+        .depo-btn{
+            margin-left:20px;
+            margin-top:5px;
+            background-color:aquamarine;
+            color:whitesmoke;
+            border-color:whitesmoke;
+        }
+        .drawo-btn{
+            margin-left:20px;
+            margin-top:5px;
+            background-color:aquamarine;
+            color:whitesmoke;
+            border-color:whitesmoke;
+        }
+        .log-box{
+            margin-top:15px;
+            margin-left:30px;
+            background-color:aqua;
+            border-color:whitesmoke,solid,1px;
+            color:whitesmoke;
+        }
+        .user{
+            margin-left:15px;
+        }
+        .pass{
+            margin-left:15px;
+        }
+        .head-box{
+            background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaRzBrF3VKFc5ADLJjxPMmetRPoEItdcRxl-D0PbXCU-BMoP-tKVshRo6Gt9sPu_f9ThA&usqp=CAU);
+            height:200px;
+            width:250px;
+            border-color:whitesmoke;
+            margin-top: 100px;
+            margin-left:350px;
+            margin-right: 100px;
+            justify-items:center;
+            text-align:center;
+            padding-top:20px;
+        }
+        .balo-num{
+            color:orange;
+        }
+        
+    </style>
+</head>
+<body>
+        <div>
+            <div class ="head-box" id ="head_boxer">
+                <label class="username">Username</label>
+                <input id ="user" type = "text"name ="username"placeholder ="Enter username"/>
+            </br>
+              <label class="password">Password</label>
+                <input id ="pass" type = "password" name = "password"/>
+            </br>
+                <button id ="log-btn"class="log-box">login</button>
+                 </div>
+            <div class ="main-box"id = "main_boxer">
+                <div id ="draw" class ="draw-card">
+                    <h2>withdraw<span id ="draw_num"></span></h2>
+                    <input id ="input_draw"type ="number"placeholder ="Enter amount to withdraw"/><br>
+                    <button id ="draw-btn"class="drawo-btn">withdraw</button>
+                </div>
+                <div id ="dep"class ="dep-card">
+                    <h2 >deposit<span id ="dep_num" ></span></h2>
+                    <input id ="input_dep"type ="number"placeholder ="Enter amount to deposit"/><br>
+                    <button id ="dep_btn"class ="depo-btn">deposit</button>
+                </div>
+                <div id ="bal"class ="bal-card">
+                    <h2>balance :<span id ="bal_num"class="balo-num">00</span>(kshs)</h2>
+                </div>
+            </div>
+        </div>
+        <script>
+                document.getElementById("log-btn").addEventListener("click",logbtn)
+            function logbtn(){
+                var head_boxs = document.getElementById("head_boxer")
+                var main_boxs = document.getElementById("main_boxer")
+                var user = document.getElementById("user").value
+                var pass = document.getElementById("pass").value
+            if(user== ""/user.length<6){
+                alert("invalid username");
+            }
+            else if(pass == ""){
+                alert("invalid password");
+            }
+            else{
+                main_boxs.style.display ="flex";
+               head_boxs.style.display ="none";
+            }
+        }
+            function deposit_fn(){
+                var dep_amount=parseFloat(document.getElementById("input_dep").value)
+                //clear input
+                dep_amount.value="";
+                var depo_num =parseFloat(document.getElementById("dep_num").innerHTML)
+                var total_dep = dep_amount + depo_num;
+                //document.getElementById("dep_num").innerHTML =total_dep;
+                //bal 1
+                var dep_bal=null;
+                var bal_amount=parseFloat(document.getElementById("bal_num").innerHTML)
+                var dep_bal = bal_amount + dep_amount;
+               document.getElementById("bal_num").innerHTML =dep_bal;
+             
+
+
+            }
+                document.getElementById("dep_btn").addEventListener("click",deposit_fn)
+            function withdraw_fn(){
+                var draw_amount = parseFloat(document.getElementById("input_draw").value)
+                //clear input
+                draw_amount.value="";
+                var drawo_num = parseFloat(document.getElementById("draw_num").innerHTML)
+                var total_draw = draw_amount + drawo_num;
+               // document.getElementById("draw_num").innerHTML = total_draw;
+                //bal 2
+                var main_balance=0;
+                var bal_amount=parseFloat(document.getElementById("bal_num").innerHTML)
+                var main_balance = bal_amount - draw_amount;
+                console.log('main_balance')
+                document.getElementById("bal_num").innerHTML= main_balance;
+                if(main_balance>=0){
+                   console.log(main_balance)
+                } else{
+                alert("Insufficient funds")}
+           if((this.main_balance=main_balance)&&(this.main_balance<0)){
+                console.log("main_balance"+tnis.main_balance);
+            }
+            }
+                document.getElementById("draw-btn").addEventListener("click",withdraw_fn)
+
+               
+    
+        </script>
+</body>
+</html>

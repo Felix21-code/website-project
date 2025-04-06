@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Maps Integration</title>
+    <style>
+        /* Style for the map container */
+        #map {
+            height: 400px; /* Set the height of the map */
+            width: 100%; /* Set the width of the map */
+        }
+    </style>
+</head>
+<body>
+    <h1>My Google Map</h1>
+    <div id="map"></div> <!-- Map will be displayed here -->
+
+    <script>
+        function initMap() {
+            // The location to center the map (latitude, longitude)
+            const location = { lat: -34.397, lng: 150.644 }; // Example coordinates
+
+            // Create a map object and specify the DOM element for display
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 8, // Zoom level
+                center: location, // Center the map on the specified location
+            });
+
+            // Add a marker at the specified location
+            const marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                title: "Hello World!", // Tooltip text
+            });
+        }
+    </script>
+
+    <!-- Load the Google Maps JavaScript API -->
+    <script async
+        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="mybutton">PopUp button</button>
+    <script>
+       function showPopUp(){
+            var newPopUp=window.createPopUp()
+            newPopUp.document.body.innerHTML="What a <b>wonderful</b> day";
+            newPopUp.show(150,300,150,50,document.all("mybutton"));
+           // else{
+           // alert("What aboring window!");}
+        }
+        document.getElementById("mybutton").addEventListener("click",showPopUp)
+
+    </script>
+</body>
+</html>

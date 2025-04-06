@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <ul class="nav_bar">
+            <li class="topic">Felix</li>
+            <li><a href="Home.html">Home</a></li>
+            <li><a href ="Documentation.html">Documentation</a></li>
+            <li><a href ="contact us.html">contact us</a></li>
+            <li><a href ="about.html">About</a></li>
+            <li><a href ="Skills.html">Skills</a></li>
+        </ul>
+        <style>
+            .body_page{
+                background-color: yellow;
+            }
+            .nav_bar{
+                position:absolute;
+                display:flex;height:60px;width:1000px;
+                flex-direction:row;margin-top:0px;justify-content:end;
+                background-color:whitesmoke;border-radius: 15%;
+            }
+                .nav_bar li{
+                    padding:20px;text-decoration: none;
+                    list-style-type:none;
+            }
+            .myProfile{
+                display:grid;
+                grid-template-columns:repeat(2,1fr);
+                gap:2px;
+            }
+            .pic{
+                margin-top:85px;height:250px;width:250px;
+                border-radius:50%;
+                background:url(C:\Users\User\Downloads\IMG_20241003_142501_1.jpg);
+            }
+            .content{
+                margin-top:85px;
+                height:400px;
+                width:540px;border-radius:15%;
+                background-color:whitesmoke;
+            }
+            a:link{
+                text-decoration:none; color:yellowgreen;
+            }
+            a:lover{
+                color:red;
+            }
+            a:visited{
+                color:grey;
+            }
+            a:focus{
+                color:green;
+            }
+            a:active{
+                color:blue;}
+                .introduce{
+                    color:white;justify-content:center;
+                    font-style:oblique;
+                }
+                .topic{
+                }
+        </style>
+</head>
+<body class="body_page">
+    <div class="myProfile">
+        <div  class="pic"></div>
+        <div class="content"><h4 class="introduce">introduction</h4>
+            <p>Hello i am Felix a passionate developer in tech .</p>
+        </div>
+    </div>
+
+    
+</body>
+</html>

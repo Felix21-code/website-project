@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h1 {
+            text-align: center;
+        }
+        input[type="number"], input[type="text"], button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .expense-list {
+            margin-top: 20px;
+        }
+        .expense-item {
+            display: flex;
+            justify-content: space-between;
+        }
+        .warning {
+            background-color: #ffeb3b;
+            padding: 5px;
+            margin: 10px 0;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .alert {
+            background-color: #f44336;
+            color: white;
+            padding: 10px;
+            margin-top: 20px;
+            text-align: center;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Finance Tracker</h1>
+    <div>
+        <input type="number" id="daily-limit" placeholder="Set your daily budget" />
+        <button onclick="setDailyLimit()">Set Budget</button>
+    </div>
+
+    <div>
+        <input type="text" id="expense-description" placeholder="Expense description" />
+        <input type="number" id="expense-amount" placeholder="Expense amount" />
+        <button onclick="addExpense()">Add Expense</button>
+    </div>
+
+    <div class="expense-list" id="expense-list"></div>
+
+    <div id="warning" class="warning" style="display:none;">
+        Warning: You have exceeded your daily budget!
+    </div>
+
+    <div id="alert" class="alert" style="display:none;">
+        You have exceeded your daily budget!
+    </div>
+</div>
+
+<script>
+    // Get elements
+    const dailyLimitInput = document.getElementById('daily-limit');
+    const expenseDescriptionInput = document.getElementById('expense-description');
+    const expenseAmountInput = document.getElementById('expense-amount');
+    const expenseList = document.getElementById('expense-list');
+    const warningDiv = document.getElementById('warning');
+    const alertDiv = document.getElementById('alert');
+
+    let dailyLimit = 0;
+    let totalExpenses = 0;
+
+    // Load data from localStorage
+    function loadData() {
+        dailyLimit = parseFloat(localStorage.getItem('dailyLimit')) || 0;
+        totalExpenses = parseFloat(localStorage.getItem('totalExpenses')) || 0;
+
+        // Display daily limit and expenses
+        dailyLimitInput.value = dailyLimit;
+        displayExpenses();
+
+        if (totalExpenses > dailyLimit && dailyLimit > 0) {
+            alertDiv.style.display = 'block';
+        } else {
+            alertDiv.style.display = 'none';
+        }
+    }
+
+    // Set daily budget limit
+    function setDailyLimit() {
+        const limit = parseFloat(dailyLimitInput.value);
+        if (isNaN(limit) || limit <= 0) {
+            alert("Please enter a valid budget.");
+            return;
+        }
+        dailyLimit = limit;
+        localStorage.setItem('dailyLimit', dailyLimit);
+        loadData();
+    }
+
+    // Add an expense
+    function addExpense() {
+        const description = expenseDescriptionInput.value.trim();
+        const amount = parseFloat(expenseAmountInput.value);
+
+        if (!description || isNaN(amount) || amount <= 0) {
+            alert("Please enter a valid description and amount.");
+            return;
+        }
+
+        // Add the expense to the total
+        totalExpenses += amount;
+        localStorage.setItem('totalExpenses', totalExpenses);
+
+        // Create the expense item in the list
+        const expenseItem = document.createElement('div');
+        expenseItem.className = 'expense-item';
+        expenseItem.innerHTML = `
+            <span>${description}</span>
+            <span>$${amount.toFixed(2)}</span>
+        `;
+        expenseList.appendChild(expenseItem);
+
+        // Clear the input fields
+        expenseDescriptionInput.value = '';
+        expenseAmountInput.value = '';
+
+        // Update UI based on the total expenses
+        checkLimit();
+        displayExpenses();
+    }
+
+    // Check if the expenses exceed the daily limit
+    function checkLimit() {
+        if (totalExpenses > dailyLimit && dailyLimit > 0) {
+            warningDiv.style.display = 'block';
+            alertDiv.style.display = 'block';
+        } else {
+            warningDiv.style.display = 'none';
+            alertDiv.style.display = 'none';
+        }
+    }
+
+    // Display the list of expenses
+    function displayExpenses() {
+        expenseList.innerHTML = ''; // Clear the list
+
+        // Display all expenses
+        const expenses = localStorage.getItem('expenses') ? JSON.parse(localStorage.getItem('expenses')) : [];
+        expenses.forEach(expense => {
+            const expenseItem = document.createElement('div');
+            expenseItem.className = 'expense-item';
+            expenseItem.innerHTML = `
+                <span>${expense.description}</span>
+                <span>$${expense.amount.toFixed(2)}</span>
+            `;
+            expenseList.appendChild(expenseItem);
+        });
+
+        checkLimit();
+    }
+
+    // Load data on page load
+    window.onload = loadData;
+</script>
+
+</body>
+</html>

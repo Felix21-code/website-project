@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h2>Enter any number from 1 to 5</h2>
+        <button id="start_btn">Start game </button>
+    </div>
+    <script>
+        function guess_number(){
+        var guessNumber=parseInt(prompt("guess a number between 1 to 5:"));
+        var randomNumber=Math.floor(Math.random() * 5) + 1;
+        if(guessNumber===randomNumber){
+            alert("Good work!Your match is correct");
+        }else{
+            alert("Try Again!Not matched"+ randomNumber +".");
+        }
+    }
+    document.getElementById("start_btn").addEventListener("click",guess_number)
+    </script>
+</body>
+</html>

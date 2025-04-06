@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red{
+            background-color: red;list-style-type:none;
+            height:100px;width:200px;border-radius:15%;padding: 10px;
+            font-style:oblique;
+        }
+        .yellow{
+            background-color:yellowgreen;list-style-type:none;
+            height:100px;width:200px;border-radius:15%;padding:10px;
+        font-style:oblique;
+        }
+        #list{
+            display:grid;
+            grid-template-columns: repeat(4,1fr);padding:0px;
+            gap:5px;
+            flex-grow:4;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="topic">counter :<span id="counter">0</span></h1>
+    <button id ="increment">increment</button>
+    <button id ="decrement">decrement</button>
+    <ul id="list"></ul>
+    <script>
+        var counter=0;
+        var ulElement=document.getElementById("list")
+        var countEl=document.getElementById("counter")
+        function incrementCounter(){
+            counter ++;
+             console.log('counter');
+            countEl.innerText=counter;
+            var li=document.createElement('li')
+            li.setAttribute('data-counter',counter)
+            li.innerHTML='<b>This is quite good progress keep it up and keep it burning.Programming is the key to bright codes</b>';
+            //  append element
+            ulElement.appendChild(li)
+            if(counter%2===0){
+                li.setAttribute('class','red')
+                li.style.color='white';
+                li.style.border="dotted";
+            }else{
+                li.setAttribute('class','yellow')
+                li.style.Color='white';
+                li.style.border='double';
+            }
+            
+        }
+    document.getElementById("increment").addEventListener("click",incrementCounter);
+    function decrementCounter(){
+        var li=ulElement.querySelector('[data-counter="'+counter+'"]');
+        li.remove()
+        counter--;
+      // countEl.innerText=counter;
+    }
+
+    document.getElementById("decrement").addEventListener("click",decrementCounter);
+    </script>
+</body>

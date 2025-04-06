@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<tittle>Application form</tittle>
+</head>
+<body>
+    <fieldset>
+        <legend>Application form</legend>
+        <form name ="myForm"action ="/action_page.php"onsubmit ="return validateForm()"method ="post">
+            FirstName:<input type ="text">
+            LastName:<input type ="text">
+                <br></br>
+        <label>Gender</label>
+        <input type ="radio"name ="radio">male</input>
+        <input type ="radio"name ="radio">female</input>
+        <input type ="radio"name ="radio">other</input>
+        <br></br>
+        <label>Email</label>
+        <input type ="Email"name ="Email"/>
+        <br></br>
+        <label>Phone number</label>
+        <input type ="number"name ="number"/>
+        <br></br>
+        <label>Password</label>
+        <input type ="password"name ="password"/>
+        <br></br>
+        School:<select>
+            <option>SSET</option>
+            <option>SSMHS</option>
+            <option>SB</option>
+        </select>
+            
+        Department:<select>
+            <option>CST</option>
+            <option>SCIENCE</option>
+            <option>MATHS</option>
+        </select>
+            <br></br>
+            <label>Date of registration</label>
+            <input type ="Date"name ="Date"/>
+            <label>Time of registration</label>
+            <input type ="Time"name ="Time"/>
+            <br></br>
+            <label>mode of study</label>
+            <input type ="radio"mame ="radio">regular</input>
+            <input type ="radio"name ="radio">parttime</input>
+            <input type ="radio"name ="radio">Distance learning</input>
+            <br></br>
+            <label>semester units</label>
+            <input type ="checkbox"name ="checkbox">web</input>
+            <input type ="checkbox"name ="checkbox">Database</input>
+            <input type ="checkbox"name ="checkbox">OOP</input>
+            <input type ="checkbox"name ="checkbox">Data structuers</input>
+            <input type ="checkbox"name ="checkbox">Algorithms</input>
+            <input type ="checkbox"name ="checkbox">Operating system</input>
+            <br></br>
+            <label>Year of study</label>
+            <input type ="radio"name ="radio">1</input>
+            <input type ="radio"name ="radio">2</input>
+           <input type ="radio"name ="radio">3</input>
+           <input type ="radio"name ="radio">4</input>
+           <br></br>
+           <label>Mode of payment</label>
+           <input type ="radio"name ="radio">Mpesa</input>
+           <input type ="radio"name ="radio">cheque</input>
+           <input type ="radio"name ="radio">Bankslip</input>
+           <br></br>
+           <label>Bank slip upload</label>
+           <input type ="file"name ="file"accept ="image"*/>
+           <br></br>
+           Remarks :
+           <textarea cols ="40"rows ="10">
+            type your remarks here...
+           </textarea>
+           <br></br>
+           <input class="submit"type ="submit"name ="submit"value="submit"class="submit"/>
+           <br></br>
+        </form>
+    </fieldset>
+    </body>
+</html>
